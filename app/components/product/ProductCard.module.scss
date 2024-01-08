@@ -1,0 +1,27 @@
+.App {
+  width: 100vw;
+  background-color: skyblue;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.form {
+  width: 30%;
+  height: 30%;
+  
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  input {
+    padding: 10px;
+    margin-bottom: 10px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+  }
+}
