@@ -5,25 +5,32 @@ import { userSchema } from "@/app/validation/Uservalid";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+type FormData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
 export default function ProductCard() {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
+  } = useForm<FormData>({
     resolver: yupResolver(userSchema),
   });
-  const onSubmitHandler = (data: any) => {
-    console.log({ data });
+  const onSubmitHandler = (data: FormData) => {
+    console.log("it is workig", data);
     reset();
   };
 
   return (
     <>
-      
       <div className={style.App}>
-      <h1>Account Login</h1>
+        <h1>Account Login</h1>
         <form onSubmit={handleSubmit(onSubmitHandler)} className={style.form}>
           <input
             type="text"
