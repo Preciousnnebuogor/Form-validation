@@ -4,27 +4,26 @@ import style from "./ProductCard.module.scss";
 import { userSchema } from "@/app/validation/Uservalid";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-
-type FormData = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-};
+import { useState } from "react";
 
 export default function ProductCard() {
+  const [isSubmit, setIsSubmit] = useState(false);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormData>({
+  } = useForm({
     resolver: yupResolver(userSchema),
   });
-  const onSubmitHandler = (data: FormData) => {
-    console.log("it is workig", data);
-    reset();
+  const onSubmitHandler = (data: any) => {
+    setIsSubmit(true);
+    setTimeout(() => {
+      console.log({ data });
+      reset();
+      setIsSubmit(false);
+    }, 5000);
   };
 
   return (
@@ -67,9 +66,13 @@ export default function ProductCard() {
             {...register("confirmPassword")}
           />
           <p>{errors.confirmPassword?.message}</p>
-          <button type="submit" className={style.submit}>
-            Submit
-          </button>
+          {isSubmit ? (
+            <p style={{color:"whitesmoke"}}>loading... </p>
+          ) : (
+            <button type="submit" className={style.submit}>
+              Submit
+            </button>
+          )}
         </form>
       </div>
     </>
