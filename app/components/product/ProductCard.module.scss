@@ -1,6 +1,6 @@
 .App {
   width: 100vw;
-  background-color: black;
+  background-color: rgb(15, 15, 15);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -11,6 +11,8 @@
     color: aliceblue;
     margin: 0 0 24px 0;
   }
+
+
 }
 
 .form {
@@ -67,3 +69,4 @@
     }
   }
 }
+ 

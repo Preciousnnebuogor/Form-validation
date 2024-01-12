@@ -37,35 +37,35 @@ export default function ProductCard() {
             placeholder="First Name.."
             {...register("firstName")}
           />
-          <p>{errors.firstName?.message}</p>
+          <p style={{color:"red"}}>{errors.firstName?.message}</p>
           <input
             type="text"
             required
             placeholder="Last Name.."
             {...register("lastName")}
           />
-          <p>{errors.lastName?.message}</p>
+          <p style={{color:"red"}}>{errors.lastName?.message}</p>
           <input
             type="text"
             required
             placeholder="felix@gmail.com"
             {...register("email")}
           />
-          <p>{errors.email?.message}</p>
+          <p style={{color:"red"}}>{errors.email?.message}</p>
           <input
             type="text"
             required
             placeholder="Password"
             {...register("password")}
           />
-          <p>{errors.password?.message}</p>
+          <p style={{color:"red"}}>{errors.password?.message}</p>
           <input
             type="text"
             required
             placeholder="Confirm Password"
             {...register("confirmPassword")}
           />
-          <p>{errors.confirmPassword?.message}</p>
+          <p style={{color:"red"}}>{errors.confirmPassword?.message}</p>
           {isSubmit ? (
             <p style={{color:"whitesmoke"}}>loading... </p>
           ) : (
