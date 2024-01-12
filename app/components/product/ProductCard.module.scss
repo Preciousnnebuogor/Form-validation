@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: column;  
 
   h1{
     color: aliceblue;
@@ -23,6 +23,13 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    width: 90vw;
+  }   
   
 
   input {
@@ -43,6 +50,10 @@
   color: rgb(139, 139, 251);
   cursor: grab;
 
+  @media (max-width: 600px) {
+
+  }
+
   &::before {
     position: absolute;
     content: "";
@@ -58,14 +69,36 @@
     );
     transform: translateX(-100%);
     transition: 0.6s;
+
+    @media (max-width: 600px) { 
+       
+      background: linear-gradient(
+        120deg,
+        transparent,
+        var(--primary-color),
+        transparent
+      );
+      transform: translateX(-100%);
+      transition: 0.6s;
+    }
   }
 
   &:hover {
     background: transparent;
     box-shadow: 0 0 20px 10px hsla(204, 70%, 53%, 0.5);
 
+    @media (max-width: 600px) { 
+      background: transparent;
+      box-shadow: 0 0 20px 10px hsla(204, 70%, 53%, 0.5);
+  
+    }
+
     &::before {
       transform: translateX(100%);
+ 
+      @media (max-width: 600px) {
+        transform: translateX(100%);
+      }
     }
   }
 }
