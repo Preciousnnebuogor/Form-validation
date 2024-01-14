@@ -34,7 +34,7 @@ export default function ProductCard() {
     setIsSubmit(true);
     setTimeout(() => {
       console.log({ data });
-      toast.info("Loading");
+      toast.success("successful registration");
 
       reset();
     });
