@@ -5,6 +5,8 @@ import { userSchema } from "@/app/validation/Uservalid";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
+import { ToastContainer, toast } from 'react-toastify';
+import "toastify-js/src/toastify.css"
 
 export default function ProductCard() {
   const [isSubmit, setIsSubmit] = useState(false);
@@ -19,7 +21,7 @@ export default function ProductCard() {
   });
   const onSubmitHandler = (data: any) => {
     setIsSubmit(true);
-    setTimeout(() => {
+    setTimeout(() => { 
       console.log({ data });
       reset();
       setIsSubmit(false);
@@ -69,12 +71,14 @@ export default function ProductCard() {
           {isSubmit ? (
             <p style={{color:"whitesmoke"}}>loading... </p>
           ) : (
-            <button type="submit" className={style.submit}>
-              Submit
-            </button>
+            <><button type="submit" className={style.submit}>
+                Submit
+              </button>
+              <ToastContainer />
+              </>
           )}
         </form>
-      </div>
+       </div>
     </>
   );
 }
