@@ -20,7 +20,7 @@ export default function ProductCard() {
   });
 
   const onSubmitHandler = (data: any) => {
-    console.log(errors.email?.message,"error message")
+    console.log(errors.email?.message, "error message");
     if (
       errors.email?.message ||
       errors.firstName?.message ||
@@ -43,8 +43,8 @@ export default function ProductCard() {
   return (
     <>
       <div className={style.App}>
-        <h1>Account Login</h1>
         <form onSubmit={handleSubmit(onSubmitHandler)} className={style.form}>
+          <h1>Account Login</h1>
           <input
             type="text"
             required
@@ -81,10 +81,7 @@ export default function ProductCard() {
           />
           <p style={{ color: "red" }}>{errors.confirmPassword?.message}</p>
 
-          <button
-            type="submit"
-            className={style.submit}
-          >
+          <button type="submit" className={style.submit}>
             Submit
           </button>
           <ToastContainer />
