@@ -25,6 +25,7 @@ export default function ProductCard() {
       errors.email?.message ||
       errors.firstName?.message ||
       errors.lastName?.message ||
+      errors.date?.message ||
       errors.password?.message ||
       errors.confirmPassword
     ) {
@@ -57,6 +58,13 @@ export default function ProductCard() {
             required
             placeholder="Last Name.."
             {...register("lastName")}
+          />
+          <p style={{ color: "red" }}>{errors.lastName?.message}</p>
+          <input
+            type="date"
+            required
+            placeholder="DOB.."
+            {...register("date")}
           />
           <p style={{ color: "red" }}>{errors.lastName?.message}</p>
           <input
