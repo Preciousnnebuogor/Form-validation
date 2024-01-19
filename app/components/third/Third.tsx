@@ -1,20 +1,23 @@
 "use client";
-import style from "./second.module.scss";
+import style from "./third.module.scss";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { userSchema } from "@/app/validation/Uservalid";
+
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { thirdValidationSchema } from "./thirdValidation";
+
 
 export default function ThirdForm() {
   const [isSubmit, setIsSubmit] = useState(false);
+  
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm({
-    resolver: yupResolver(userSchema),
+    resolver: yupResolver(thirdValidationSchema),
   });
 
   const onSubmitHandler = (data: any) => {
@@ -34,34 +37,29 @@ export default function ThirdForm() {
       toast.success("successful registration");
 
       reset();
+      
     });
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit(onSubmitHandler)}>
-        <input 
-        type="email" 
-        placeholder="Email" 
-        {...register("email")} 
-        />
-        <input 
-        type="phone" 
-        placeholder="Phone"
-         {...register("phone")}
-          />
-        <input
-         type="address"
-          placeholder="Address" 
-          {...register("address")} 
-          />
+    <div className={style.App}>
+      <form onSubmit={handleSubmit(onSubmitHandler)} className={style.form}>
+        <h1>Third Stage</h1>
+        <input type="email" placeholder="Email" {...register("email")} />
+        <p style={{ color: "red" }}>{errors.email?.message}</p>
+        <input type="phone" placeholder="Phone" {...register("phone")} />
+        <p style={{ color: "red" }}>{errors.phone?.message}</p>
+        <input type="address" placeholder="Address" {...register("address")} />
+        <p style={{ color: "red" }}>{errors.address?.message}</p>
         <input
           type="text"
           placeholder="Socialmedia Link"
           {...register("Socialmedia")}
         />
-        <button 
-        type="submit">Next</button>
+        <p style={{ color: "red" }}>{errors.Socialmedia?.message}</p>
+        <button type="submit" className={style.submit}>
+          Submit
+        </button>
       </form>
     </div>
   );

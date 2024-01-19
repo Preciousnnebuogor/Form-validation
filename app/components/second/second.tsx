@@ -2,23 +2,25 @@
 import style from "./second.module.scss";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { userSchema } from "@/app/validation/Uservalid";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { secondValidationSchema } from "./secondValidation";
+import { useFormStore } from "@/app/zustand/Form";
 
 export default function SecondForm() {
   const [isSubmit, setIsSubmit] = useState(false);
+  const z = useFormStore();
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
   } = useForm({
-    resolver: yupResolver(userSchema),
+    resolver: yupResolver(secondValidationSchema),
   });
 
   const onSubmitHandler = (data: any) => {
-    console.log(errors.email?.message, "error message");
+    console.log(errors.country?.message, "error message");
     if (
       errors.country?.message ||
       errors.state?.message ||
@@ -34,6 +36,7 @@ export default function SecondForm() {
       toast.success("successful registration");
 
       reset();
+      z.updateStep("step3");
     });
   };
 
